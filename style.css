@@ -1,0 +1,48 @@
+.btn-block__next {
+	display: none;
+}
+
+.container__element {
+	display: none;
+}
+
+.variant {
+	background-color: #f2f2f2;
+	padding:20px;
+	border-right: 1px solid black;
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.variants-block__item {
+	padding-left: 30px;
+	user-select: none;
+}
+
+.variant-block__checkbox {
+	display: none;
+}
+
+.variant-block__real-checkbox {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	background-color: #000;
+	display: inline-block;
+}
+
+.variant-block__real-checkbox:before {
+	content: '\2713';
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	display: none;
+}
+
+.variant-block__checkbox:checked + .variant-block__real-checkbox:before {
+	display: flex;
+}
