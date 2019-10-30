@@ -109,9 +109,6 @@ function questionSelect(elem) {
 }
 
 
-
-
-
 check.addEventListener('click', checkQuestion);
 
 // переключение вопроса
@@ -140,7 +137,64 @@ function nextQuestion() {
 
 	questionNumber++;
 
+	if (questionNumber == questionArr.length) {
+		document.querySelector('.btn-block__result').style.display = 'block';
+		check.style.display = 'none';
+	}
+
+	if (questionNumber == questionArr.length - 1) {
+		nextBtn.value = 'Закончить тест';
+	}
+
 	mainBlock.remove();
 }
 
 nextBtn.addEventListener('click', nextQuestion);
+
+// найдем кнопку для показа результатов
+
+var resultBtn = document.querySelector('.btn-block__result');
+
+// найдем кнопку для перезагрузки страницы
+
+var againBtn = document.querySelector('.btn-block__again');
+
+function showResult() {
+	let resultBlock = document.querySelector('.result-block');
+	for (let item in questionSelectArr) {
+		console.log(questionSelectArr[item].right);
+
+		let questionTitle = document.createElement('div');
+		questionTitle.className = 'result-block__list-item result-block__question-title';
+		questionTitle.innerHTML = 'Вопрос № ' + (+item + 1);
+
+		let questionAnswerRight = document.createElement('div');
+		questionAnswerRight.className = 'result-block__list-item result-block__question-answer_right';
+		questionAnswerRight.innerHTML = questionSelectArr[item].right;
+
+		let questionAnswerWrong = document.createElement('div');
+		questionAnswerWrong.className = 'result-block__list-item result-block__question-answer_wrong';
+		questionAnswerWrong.innerHTML = questionSelectArr[item].wrong;
+
+		let resultCont = document.createElement('div');
+		resultCont.className = 'result-block__question';
+		resultCont.append(questionTitle);
+		resultCont.append(questionAnswerRight);
+
+		if (questionSelectArr[item].wrong !== undefined) {
+			resultCont.append(questionAnswerWrong);
+		}
+
+		resultBlock.append(resultCont);
+
+		resultBtn.disabled = 'disabled';
+
+		againBtn.style.display = 'block';
+	}
+}
+
+resultBtn.addEventListener('click', showResult);
+
+againBtn.addEventListener('click', function(){
+	window.location.reload();
+});

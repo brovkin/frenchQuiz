@@ -2,6 +2,41 @@
 	display: none;
 }
 
+.btn-block__result {
+	display: none;
+}
+
+.btn-block__again {
+	display: none;
+}
+
+.result-block {
+	display: flex;
+	flex-flow: column wrap;
+	width: 30%;
+}
+
+.result-block__question {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.result-block__question-answer_right {
+	background-color: green;
+	padding: 10px;
+}
+
+.result-block__question-answer_wrong {
+	background-color: red;
+	padding: 10px;
+}
+
+.result-block__list-item {
+	flex: 1;
+}
+
 .container__element {
 	display: none;
 }
