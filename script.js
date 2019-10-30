@@ -7,6 +7,8 @@ let questionArr = document.querySelectorAll('.container__element');
 let question = document.querySelector('.container__element[data-position="current"]');
 question.style.display = 'block';
 
+let questionNumber = 0;
+
 // сделаем обработчик нажатия на checkbox
 
 let el = document.querySelectorAll('.variants-block');
@@ -75,6 +77,40 @@ function checkQuestion(event) {
 
 }
 
+// создадим массив куда будет складывать правильные и 
+// не правильные ответы
+
+let questionSelectArr = {};
+
+for(let i = 0; i < questionArr.length; i++) {
+	questionSelectArr[i] = {};
+}
+
+console.log(questionSelectArr);
+
+// создадим функцию которая будет помещать эти ответы в массив
+
+function questionSelect(elem) {
+	console.log(questionNumber);
+	elem.forEach((el, i) => {
+		console.dir(el.parentNode.dataset.true);
+
+		if (el.parentNode.dataset.true) {
+			// questionSelectArr[0] = el.parentNode.lastElementChild.innerHTML;
+			// console.dir(el.parentNode.lastElementChild.innerHTML);
+			questionSelectArr[questionNumber].right = el.parentNode.lastElementChild.innerHTML;
+
+		} else if (el.checked) {
+			questionSelectArr[questionNumber].wrong = el.parentNode.lastElementChild.innerHTML;
+		}
+
+		console.log(questionSelectArr);
+	});
+}
+
+
+
+
 
 check.addEventListener('click', checkQuestion);
 
@@ -88,6 +124,10 @@ function nextQuestion() {
 
 	let question = document.querySelector('.container__element[data-position="current"]');
 
+	let variants = question.querySelectorAll('.variant-block__checkbox');
+
+	questionSelect(variants);
+
 	question.dataset.position = '';
 	question.style.display = 'none';
 
@@ -98,8 +138,9 @@ function nextQuestion() {
 	check.disabled = true;
 	nextBtn.style.display = 'none';
 
+	questionNumber++;
+
 	mainBlock.remove();
 }
 
 nextBtn.addEventListener('click', nextQuestion);
-
