@@ -80,20 +80,18 @@ function checkQuestion(event) {
 // создадим массив куда будет складывать правильные и 
 // не правильные ответы
 
-let questionSelectArr = {};
+var questionSelectArr = {};
 
 for(let i = 0; i < questionArr.length; i++) {
 	questionSelectArr[i] = {};
 }
 
-console.log(questionSelectArr);
 
 // создадим функцию которая будет помещать эти ответы в массив
 
 function questionSelect(elem) {
-	console.log(questionNumber);
+
 	elem.forEach((el, i) => {
-		console.dir(el.parentNode.dataset.true);
 
 		if (el.parentNode.dataset.true) {
 			// questionSelectArr[0] = el.parentNode.lastElementChild.innerHTML;
@@ -104,7 +102,6 @@ function questionSelect(elem) {
 			questionSelectArr[questionNumber].wrong = el.parentNode.lastElementChild.innerHTML;
 		}
 
-		console.log(questionSelectArr);
 	});
 }
 
@@ -159,10 +156,31 @@ var resultBtn = document.querySelector('.btn-block__result');
 
 var againBtn = document.querySelector('.btn-block__again');
 
+// напишем функцию которая считает процент правильных ответов
+
+function showTotal(countQuestions, wrong) {
+	let result = (wrong / countQuestions * 100) - 100;
+
+	if (wrong == 0) {
+		result = 100;
+	} else if (countQuestions == wrong) {
+		result = 0;
+	}
+
+	let slashBlock = document.querySelector('.total-block__result-block');
+
+	slashBlock.innerHTML = wrong + ' / ' + countQuestions;
+
+	return Math.abs(result);
+}
+
+// напишем функцию которая показывает результат
+
 function showResult() {
 	let resultBlock = document.querySelector('.result-block');
+	let questionWrongCount = 0;
 	for (let item in questionSelectArr) {
-		console.log(questionSelectArr[item].right);
+		// console.log(questionSelectArr[item].right);
 
 		let questionTitle = document.createElement('div');
 		questionTitle.className = 'result-block__list-item result-block__question-title';
@@ -176,6 +194,12 @@ function showResult() {
 		questionAnswerWrong.className = 'result-block__list-item result-block__question-answer_wrong';
 		questionAnswerWrong.innerHTML = questionSelectArr[item].wrong;
 
+		let questionIconRight = document.createElement('i');
+		questionIconRight.className = 'fa fa-check';
+
+		let questionIconWrong = document.createElement('i');
+		questionIconWrong.className = 'fa fa-times';
+
 		let resultCont = document.createElement('div');
 		resultCont.className = 'result-block__question';
 		resultCont.append(questionTitle);
@@ -183,7 +207,13 @@ function showResult() {
 
 		if (questionSelectArr[item].wrong !== undefined) {
 			resultCont.append(questionAnswerWrong);
+			resultCont.append(questionIconWrong);
+			questionWrongCount++;
+		} else {
+			resultCont.append(questionIconRight);
 		}
+
+		
 
 		resultBlock.append(resultCont);
 
@@ -191,6 +221,31 @@ function showResult() {
 
 		againBtn.style.display = 'block';
 	}
+
+	let total = Math.floor(showTotal(questionArr.length, questionWrongCount));
+
+	let totalBlock = document.querySelector('.total-block');
+
+	totalBlock.style.display = 'flex';
+
+	let totalValue = document.querySelector('.total-block__value');
+
+	totalValue.innerHTML = 0;
+
+	if (total !== 0) { 
+
+		let interval = setInterval(function(){
+
+			totalValue.innerHTML++;
+			
+			if (totalValue.innerHTML == total) {
+				clearInterval(interval);
+			}
+
+		}, 30);
+
+	}
+
 }
 
 resultBtn.addEventListener('click', showResult);
@@ -198,3 +253,7 @@ resultBtn.addEventListener('click', showResult);
 againBtn.addEventListener('click', function(){
 	window.location.reload();
 });
+
+
+
+
