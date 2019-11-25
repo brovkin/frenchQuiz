@@ -1,0 +1,22 @@
+{
+  "name": "brozabro",
+  "description": "",
+  "main": "gulpfile.js",
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.4.1",
+    "font-awesome": "fontawesome#4.7",
+    "slick-carousel": "^1.8.1"
+  },
+  "dependencies": {
+    "flickity": "^2.2.1"
+  }
+}

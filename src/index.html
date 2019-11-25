@@ -2,87 +2,89 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="frenchQuiz">
+	<title>frenchQuiz</title>
+	<link rel="icon" href="img/favicon.ico?v=2" type="image/x-icon" />
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	
-	<div id="container">
+	<div id="app">
 
-		<div class="container__element" data-position="current">
+		<div class="app__element" data-position="current">
 			<div class="question-block">
 				<h2 class="question-title">Вопрос №1</h2>
 				<div class="question-desc">Как вас зовут?</div>
 			</div>
 			<div class="variants-block">
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Вадим</span>
 				</label>
 	
-				<label class="variant" data-true="yes">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant" data-true="yes">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Артем</span>
 				</label>
 	
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Александр</span>
 				</label>
 			</div>
 		</div>
 
-		<div class="container__element">
+		<div class="app__element">
 			<div class="question-block">
 				<h2 class="question-title">Вопрос №2</h2>
 				<div class="question-desc">Кто вы?</div>
 			</div>
 			<div class="variants-block">
-				<label class="variant" data-true="yes">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant" data-true="yes">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Человек</span>
 				</label>
 	
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Насекомое</span>
 				</label>
 	
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">Животное</span>
 				</label>
 			</div>
 		</div>
 
-		<div class="container__element">
+		<div class="app__element">
 			<div class="question-block">
 				<h2 class="question-title">Вопрос №3</h2>
 				<div class="question-desc">Сколько вам лет?</div>
 			</div>
 			<div class="variants-block">
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">21</span>
 				</label>
 	
-				<label class="variant">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">12</span>
 				</label>
 	
-				<label class="variant" data-true="yes">
-					<input type="checkbox" class="variant-block__checkbox">
-					<span class="variant-block__real-checkbox"></span>
+				<label class="variants-block__variant" data-true="yes">
+					<input type="checkbox" class="variants-block__checkbox">
+					<span class="variants-block__real-checkbox"></span>
 					<span class="variants-block__item">25</span>
 				</label>
 			</div>
@@ -100,7 +102,7 @@
 				<div class="result-block__question-title">Вопрос 1</div>
 				<div class="result-block__question-answer_right">Артем</div>
 				<div class="result-block__question-answer_wrong">Владимир</div>
-				
+
 			</div> -->
 		</div>
 
@@ -112,7 +114,7 @@
 			<div class="total-block__result-block"></div>
 		</div>
 	</div>
-	
-	<script src="script.js"></script>
+
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
