@@ -1,0 +1,34 @@
+.wrapper {
+  background: linear-gradient(45deg, #D1FAF2, #F1EDEE);
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    background-image: url('/img/bg.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: left;
+    height: 100vh;
+    animation: bgMove 20s linear infinite;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__block {
+    position: relative;
+    z-index: 10;
+    padding: 50px 100px;
+  }
+}
+
+@keyframes bgMove {
+  from {background-position: bottom left;}
+  to {background-position: top right;}
+}

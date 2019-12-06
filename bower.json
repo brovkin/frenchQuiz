@@ -17,6 +17,7 @@
     "slick-carousel": "^1.8.1"
   },
   "dependencies": {
-    "flickity": "^2.2.1"
+    "flickity": "^2.2.1",
+    "gsap": "^3.0.2"
   }
 }

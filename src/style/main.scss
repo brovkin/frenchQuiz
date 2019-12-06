@@ -8,4 +8,13 @@
 * Custom
 */
 
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src:url('../../src/fonts/Montserrat-Regular.ttf');
+}
+
+@import "partials/basic.scss";
 @import "partials/app.scss";
+@import "partials/wrapper.scss";
+@import "partials/logo.scss";
+@import "partials/welcome.scss";
