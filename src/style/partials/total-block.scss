@@ -1,0 +1,8 @@
+.total-block {
+  display: none;
+  justify-content: space-between;
+
+  &__value-block {
+    display: flex;
+  }
+}

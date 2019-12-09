@@ -9,6 +9,8 @@ question.style.display = 'block';
 
 let questionNumber = 0;
 
+document.querySelector('.question-number__current').innerHTML = questionNumber + 1;
+
 // сделаем обработчик нажатия на checkbox
 
 let el = document.querySelectorAll('.variants-block');
@@ -132,6 +134,8 @@ function nextQuestion() {
 
     questionNumber++;
 
+    document.querySelector('.question-number__current').innerHTML = questionNumber + 1;
+
     if (questionNumber == questionArr.length) {
         document.querySelector('.btn-block__result').style.display = 'block';
         check.style.display = 'none';
@@ -251,6 +255,7 @@ againBtn.addEventListener('click', function(){
     window.location.reload();
 });
 
+document.querySelector('.question-number__all').innerHTML = questionArr.length;
 
 
 
