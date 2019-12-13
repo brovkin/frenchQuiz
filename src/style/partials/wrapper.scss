@@ -25,6 +25,10 @@
     position: relative;
     z-index: 10;
     padding: 50px 100px;
+
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
   }
 }
 

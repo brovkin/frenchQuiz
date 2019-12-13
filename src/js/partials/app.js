@@ -9,6 +9,8 @@ question.style.display = 'block';
 
 let questionNumber = 0;
 
+let check = document.querySelector('.btn-block__check');
+
 document.querySelector('.question-number__current').innerHTML = questionNumber + 1;
 
 // сделаем обработчик нажатия на checkbox
@@ -24,6 +26,8 @@ function checkbox(event) {
     let inputs = document.querySelectorAll('.variants-block__checkbox');
 
     check.disabled = false;
+
+    check.className = 'btn-block__check';
 
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].checked = false;
@@ -42,8 +46,6 @@ for (let i = 0; i < el.length; i++) {
 
 // проверим правельность вопроса
 
-var check = document.querySelector('.btn-block__check');
-
 function checkQuestion(event) {
     let inputs = document.querySelectorAll('.variants-block__checkbox'),
         nextBtn = document.querySelector('.btn-block__next'),
@@ -54,11 +56,13 @@ function checkQuestion(event) {
         let variant = inputs[i].parentNode.dataset.true;
 
         if (inputs[i].checked && variant == 'yes') {
-            inputs[i].parentNode.style.backgroundColor = 'green';
+
+            inputs[i].parentNode.style.backgroundColor = '#3CA84B';
+            inputs[i].parentNode.lastElementChild.style.color = '#fff';
 
             block.style.pointerEvents = 'none';
 
-            nextBtn.style.display = 'block';
+            nextBtn.style.display = 'flex';
             check.style.display = 'none';
         } else {
 
@@ -67,15 +71,19 @@ function checkQuestion(event) {
             block.style.pointerEvents = 'none';
 
             if (inputs[i].checked) {
-                inputs[i].parentNode.style.backgroundColor = 'red';
-                trueVariant.style.backgroundColor = 'green';
+                inputs[i].parentNode.style.backgroundColor = '#D43140';
+                inputs[i].parentNode.lastElementChild.style.color = '#fff';
+                trueVariant.style.backgroundColor = '#3CA84B';
+                trueVariant.lastElementChild.style.color = '#fff';
 
-                nextBtn.style.display = 'block';
+                nextBtn.style.display = 'flex';
                 check.style.display = 'none';
             }
         }
 
     }
+
+    check.className = 'btn-block__check disabled';
 
 }
 
@@ -128,16 +136,20 @@ function nextQuestion() {
     question.nextElementSibling.dataset.position = 'current';
     question.nextElementSibling.style.display = 'block';
 
-    check.style.display = 'block';
+    check.style.display = 'flex';
+
+
     check.disabled = true;
     nextBtn.style.display = 'none';
 
     questionNumber++;
+    if (questionNumber !== questionArr.length) {
+        document.querySelector('.question-number__current').innerHTML = questionNumber + 1;
+    }
 
-    document.querySelector('.question-number__current').innerHTML = questionNumber + 1;
 
     if (questionNumber == questionArr.length) {
-        document.querySelector('.btn-block__result').style.display = 'block';
+        document.querySelector('.btn-block__result').style.display = 'flex';
         check.style.display = 'none';
     }
 
@@ -187,6 +199,12 @@ function showResult() {
         questionTitle.className = 'result-block__list-item result-block__question-title';
         questionTitle.innerHTML = 'Вопрос № ' + (+item + 1);
 
+        let questionIconRight = document.createElement('i');
+        questionIconRight.className = 'result-block__icon-right fa fa-check';
+
+        let questionIconWrong = document.createElement('i');
+        questionIconWrong.className = 'result-block__icon-wrong fa fa-times';
+
         let questionAnswerRight = document.createElement('div');
         questionAnswerRight.className = 'result-block__list-item result-block__question-answer_right';
         questionAnswerRight.innerHTML = questionSelectArr[item].right;
@@ -195,32 +213,29 @@ function showResult() {
         questionAnswerWrong.className = 'result-block__list-item result-block__question-answer_wrong';
         questionAnswerWrong.innerHTML = questionSelectArr[item].wrong;
 
-        let questionIconRight = document.createElement('i');
-        questionIconRight.className = 'fa fa-check';
-
-        let questionIconWrong = document.createElement('i');
-        questionIconWrong.className = 'fa fa-times';
-
         let resultCont = document.createElement('div');
         resultCont.className = 'result-block__question';
         resultCont.append(questionTitle);
-        resultCont.append(questionAnswerRight);
 
         if (questionSelectArr[item].wrong !== undefined) {
+            // resultCont.append(questionIconWrong);
             resultCont.append(questionAnswerWrong);
-            resultCont.append(questionIconWrong);
             questionWrongCount++;
         } else {
-            resultCont.append(questionIconRight);
+            // resultCont.append(questionIconRight);
         }
+
+        resultCont.append(questionAnswerRight);
+
+
 
 
 
         resultBlock.append(resultCont);
 
-        resultBtn.disabled = 'disabled';
+        resultBtn.style.display = 'none';
 
-        againBtn.style.display = 'block';
+        againBtn.style.display = 'flex';
     }
 
     let total = Math.floor(showTotal(questionArr.length, questionWrongCount));

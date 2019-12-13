@@ -1,26 +1,38 @@
 .result-block {
     display: flex;
     flex-flow: column wrap;
-    width: 30%;
+    width: 100%;
 
   &__question {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      flex-flow: row wrap;
+    }
+
+    &-title {
+      width: 30%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   }
 
   &__question-answer_right {
-    background-color: green;
+    background-color: #4AA950;
+    color: #fff;
     padding: 10px;
+    flex: 1;
   }
 
   &__question-answer_wrong {
-    background-color: red;
+    background-color: #CC2D3B;
+    color: #fff;
     padding: 10px;
-  }
-
-  &__list-item {
     flex: 1;
   }
 }
