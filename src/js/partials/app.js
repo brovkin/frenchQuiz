@@ -85,6 +85,10 @@ function checkQuestion(event) {
 
     check.className = 'btn-block__check disabled';
 
+    if (questionNumber + 1 === questionArr.length) {
+        nextBtn.firstChild.innerText = 'Закончить тест';
+    }
+
 }
 
 // создадим массив куда будет складывать правильные и
@@ -151,10 +155,6 @@ function nextQuestion() {
     if (questionNumber == questionArr.length) {
         document.querySelector('.btn-block__result').style.display = 'flex';
         check.style.display = 'none';
-    }
-
-    if (questionNumber == questionArr.length - 1) {
-        nextBtn.value = 'Закончить тест';
     }
 
     mainBlock.remove();
