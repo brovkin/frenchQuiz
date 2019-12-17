@@ -9,6 +9,8 @@
     background-position: left;
     height: 100vh;
     animation: bgMove 20s linear infinite;
+    display: flex;
+    align-items: center;
 
     &:before {
       content: "";

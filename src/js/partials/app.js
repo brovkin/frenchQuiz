@@ -227,10 +227,6 @@ function showResult() {
 
         resultCont.append(questionAnswerRight);
 
-
-
-
-
         resultBlock.append(resultCont);
 
         resultBtn.style.display = 'none';
@@ -261,6 +257,8 @@ function showResult() {
         }, 30);
 
     }
+
+    document.querySelector('.result-block').style.display = 'flex';
 
 }
 
