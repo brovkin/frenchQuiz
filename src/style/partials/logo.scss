@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   &__img {
+    width: 40%;
     @media (max-width: 768px) {
       width: 100%;
     }
