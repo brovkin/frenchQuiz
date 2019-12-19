@@ -259,6 +259,7 @@ function showResult() {
     }
 
     document.querySelector('.result-block').style.display = 'flex';
+    document.querySelector('.wrapper').style.height = 'auto';
 
 }
 
