@@ -86,7 +86,7 @@ function checkQuestion(event) {
     check.className = 'btn-block__check disabled';
 
     if (questionNumber + 1 === questionArr.length) {
-        nextBtn.firstChild.innerText = 'Закончить тест';
+        nextBtn.firstChild.innerText = 'Terminer le quiz';
     }
 
 }
@@ -238,8 +238,6 @@ function showResult() {
 
     let totalBlock = document.querySelector('.total-block');
 
-    totalBlock.style.display = 'flex';
-
     let totalValue = document.querySelector('.total-block__value');
 
     totalValue.innerHTML = 0;
@@ -260,6 +258,8 @@ function showResult() {
 
     document.querySelector('.result-block').style.display = 'flex';
     document.querySelector('.wrapper').style.height = 'auto';
+
+    totalBlock.style.display = 'flex';
 
 }
 
